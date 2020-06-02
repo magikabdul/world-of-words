@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { routes } from '../routes';
 import theme from '../theme/theme';
 
+import GlobalStyles from '../theme/GlobalStyles';
 import WelcomePage from '../pages/WelcomePage';
 import ErrorPage from '../pages/ErrorPage';
 import LoginPage from '../pages/LoginPage';
@@ -16,6 +17,7 @@ export default class Root extends Component {
     return (
       <BrowserRouter>
         <CssBaseline />
+        <GlobalStyles />
         <ThemeProvider theme={theme}>
           <Switch>
             <Route exact path={routes.home} component={WelcomePage} />

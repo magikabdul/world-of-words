@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
 import { routes } from '../routes';
-import GlobalStyles from '../theme/GlobalStyles';
+
 import { WelcomeHeader } from '../components';
 
 const Wrapper = styled.div`
@@ -34,7 +34,6 @@ const StyledLink = styled(Link)`
 const WelcomePage = () => {
   return (
     <>
-      <GlobalStyles />
       <WelcomeHeader />
       <Wrapper>
         <Title>IMPROVE YOUR</Title>
