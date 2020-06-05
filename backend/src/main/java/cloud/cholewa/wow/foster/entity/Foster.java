@@ -19,7 +19,6 @@ public class Foster {
 
     private String firstName;
     private String lastName;
-    private String mail;
     private LocalDateTime createdAt;
     private LocalDateTime lastSeenAt;
 }
