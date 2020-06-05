@@ -29,6 +29,7 @@ public class EmailService {
             e.printStackTrace();
         }
 
-        mailSender.send(mail);
+        Thread thread = new Thread(() -> mailSender.send(mail));
+        thread.start();
     }
 }
