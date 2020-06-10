@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+//@RestController
 @RequestMapping(value = "/api/fosters")
 @RequiredArgsConstructor
 public class FosterApi {
 
     private final FosterService fosterService;
 
-    @PostMapping("/add")
-    public ResponseEntity<FosterResponse> addFoster(@RequestBody FosterRegister fosterRegister) {
-        FosterResponse response = fosterService.add(fosterRegister);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
+//    @PostMapping("/add")
+//    public ResponseEntity<FosterResponse> addFoster(@RequestBody FosterRegister fosterRegister) {
+//        FosterResponse response = fosterService.add(fosterRegister);
+//        return new ResponseEntity<>(response, HttpStatus.CREATED);
+//    }
 }

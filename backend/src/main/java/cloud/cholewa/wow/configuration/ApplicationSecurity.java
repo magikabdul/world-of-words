@@ -29,6 +29,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/login").permitAll()
                 .antMatchers("/api/fosters/add").permitAll()
                 .antMatchers("/api/activate**").permitAll()
+                .antMatchers("/api/test").authenticated()
                 .anyRequest().denyAll();
     }
 }

@@ -40,6 +40,9 @@ public class FosterService {
         user.setAccountNonLocked(true);
         user.setAccountNonExpired(true);
         user.setEnabled(false);
+        user.setFirstName(fosterRegister.getFirstName());
+        user.setLastName(fosterRegister.getLastName());
+        user.setCreatedAt(LocalDateTime.now());
 
         User newUser = userService.addUser(user);
 
@@ -48,10 +51,7 @@ public class FosterService {
         activateToken.setUser(user);
 
         Foster foster = new Foster();
-        foster.setFirstName(fosterRegister.getFirstName());
-        foster.setLastName(fosterRegister.getLastName());
         foster.setUser(user);
-        foster.setCreatedAt(LocalDateTime.now());
 
         userService.addToken(activateToken);
 
@@ -61,8 +61,8 @@ public class FosterService {
 
         return FosterResponse.builder()
                 .id(newFoster.getId())
-                .fistName(newFoster.getFirstName())
-                .lastName(newFoster.getLastName())
+                .fistName(newUser.getFirstName())
+                .lastName(newUser.getLastName())
                 .username(newUser.getUsername())
                 .email(newUser.getEmail())
                 .build();

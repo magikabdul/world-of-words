@@ -9,18 +9,27 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/")
+@CrossOrigin("*")
 public class UserApi {
 
     private final UserService userService;
 
     @PostMapping("login")
-    public ResponseEntity<String> userLogin(@RequestBody UserLogin userLogin) {
-        return new ResponseEntity<>("works login: " , HttpStatus.OK);
+    public ResponseEntity<AccessTokenResponse> userLogin(@RequestBody UserLogin userLogin) {
+        return new ResponseEntity<>(userService.issueAccessToken(userLogin), HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("activate")
     public ResponseEntity<String> activateUser(@RequestParam String token) {
         userService.activateUser(token);
         return new ResponseEntity<>("Account activated", HttpStatus.OK);
+    }
+
+    //TODO --delete below
+
+    @GetMapping("test")
+    public ResponseEntity<String> test() {
+        System.out.println("Here");
+        return new ResponseEntity<>("You are: ", HttpStatus.OK);
     }
 }

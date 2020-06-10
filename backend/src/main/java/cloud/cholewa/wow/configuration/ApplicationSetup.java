@@ -41,10 +41,10 @@ public class ApplicationSetup {
             user.setCredentialsNonExpired(true);
             user.setEnabled(true);
             user.setRoles("ADMIN");
+            user.setFirstName(admin.getFirstName());
+            user.setLastName(admin.getLastName());
+            user.setCreatedAt(LocalDateTime.now());
 
-            foster.setFirstName(admin.getFirstName());
-            foster.setLastName(admin.getLastName());
-            foster.setCreatedAt(LocalDateTime.now());
             foster.setUser(user);
 
             userRepository.save(user);

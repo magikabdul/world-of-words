@@ -16,9 +16,4 @@ public class Foster {
 
     @OneToOne
     private User user;
-
-    private String firstName;
-    private String lastName;
-    private LocalDateTime createdAt;
-    private LocalDateTime lastSeenAt;
 }

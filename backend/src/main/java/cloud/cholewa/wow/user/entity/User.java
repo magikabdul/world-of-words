@@ -8,6 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +24,8 @@ public class User implements UserDetails {
     private Long id;
 
     private String username;
+    private String firstName;
+    private String lastName;
     private String password;
 
     private String email;
@@ -33,6 +36,9 @@ public class User implements UserDetails {
     private boolean enabled;
 
     private String roles;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime lastSeenAt;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
