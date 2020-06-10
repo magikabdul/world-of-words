@@ -1,5 +1,6 @@
 package cloud.cholewa.wow.configuration;
 
+import cloud.cholewa.wow.common.ClockService;
 import cloud.cholewa.wow.foster.boundary.FosterRepository;
 import cloud.cholewa.wow.foster.entity.Foster;
 import cloud.cholewa.wow.user.boundary.UserRepository;
@@ -29,6 +30,8 @@ public class ApplicationSetup {
 
     @PostConstruct
     public void addAdmin() {
+        LocalDateTime time = ClockService.now();
+
         if (userRepository.findByUsername(admin.getUsername()).isEmpty() && userRepository.findByEmail(admin.getMail()).isEmpty()) {
             Foster foster = new Foster();
             User user = new User();
@@ -43,7 +46,7 @@ public class ApplicationSetup {
             user.setRoles("ADMIN");
             user.setFirstName(admin.getFirstName());
             user.setLastName(admin.getLastName());
-            user.setCreatedAt(LocalDateTime.now());
+            user.setCreatedAt(time);
 
             foster.setUser(user);
 
@@ -51,7 +54,6 @@ public class ApplicationSetup {
             fosterRepository.save(foster);
         }
 
-        LocalDateTime time = LocalDateTime.now();
         emailService.send(admin.getMail(), "Application Info", "Wow application started:" + time.toLocalDate() + " " + time.toLocalTime());
     }
 }

@@ -1,5 +1,6 @@
 package cloud.cholewa.wow.foster.service;
 
+import cloud.cholewa.wow.common.ClockService;
 import cloud.cholewa.wow.exceptions.AccountCreationException;
 import cloud.cholewa.wow.foster.boundary.FosterRegister;
 import cloud.cholewa.wow.foster.boundary.FosterRepository;
@@ -12,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
@@ -42,7 +42,7 @@ public class FosterService {
         user.setEnabled(false);
         user.setFirstName(fosterRegister.getFirstName());
         user.setLastName(fosterRegister.getLastName());
-        user.setCreatedAt(LocalDateTime.now());
+        user.setCreatedAt(ClockService.now());
 
         User newUser = userService.addUser(user);
 

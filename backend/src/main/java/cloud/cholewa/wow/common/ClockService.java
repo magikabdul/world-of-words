@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-//@Service
 public class ClockService {
 
     public static LocalDateTime now() {

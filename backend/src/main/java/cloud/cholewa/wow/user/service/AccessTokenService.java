@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +34,7 @@ public class AccessTokenService {
                 .signWith(SignatureAlgorithm.HS512, "secretPass")
                 .compact();
 
-        AccessToken accessToken = new AccessToken();
+        AccessToken accessToken = accessTokenRepository.findByUser(user).orElse(new AccessToken());
         accessToken.setUser(user);
         accessToken.setToken(token);
         accessToken.setExpiresAt(expiresTime);

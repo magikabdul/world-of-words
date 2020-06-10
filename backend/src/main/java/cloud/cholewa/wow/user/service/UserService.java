@@ -4,15 +4,16 @@ import cloud.cholewa.wow.configuration.EmailService;
 import cloud.cholewa.wow.exceptions.InvalidActivationToken;
 import cloud.cholewa.wow.exceptions.UserAuthorizationException;
 import cloud.cholewa.wow.exceptions.UserNotFoundException;
-import cloud.cholewa.wow.user.boundary.*;
+import cloud.cholewa.wow.user.boundary.AccessTokenResponse;
+import cloud.cholewa.wow.user.boundary.ActivateTokenRepository;
+import cloud.cholewa.wow.user.boundary.UserLogin;
+import cloud.cholewa.wow.user.boundary.UserRepository;
 import cloud.cholewa.wow.user.entity.ActivateToken;
 import cloud.cholewa.wow.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Optional;
 
 @Service
