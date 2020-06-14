@@ -3,6 +3,7 @@ package cloud.cholewa.wow.user.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -46,7 +47,7 @@ public class User implements UserDetails {
 
         StringBuilder allRoles = new StringBuilder(roles.trim());
 
-        while (roles.length() > 0) {
+        while (allRoles.length() > 0) {
             int position = allRoles.indexOf(",");
 
             String r;

@@ -1,5 +1,6 @@
 package cloud.cholewa.wow.user.service;
 
+import cloud.cholewa.wow.common.ClockService;
 import cloud.cholewa.wow.configuration.EmailService;
 import cloud.cholewa.wow.exceptions.InvalidActivationToken;
 import cloud.cholewa.wow.exceptions.UserAuthorizationException;
@@ -64,6 +65,7 @@ public class UserService {
             throw new UserNotFoundException("User not found");
 
         User user = optionalUserByUsername.orElseGet(optionalUserByEmail::get);
+        user.setLastSeenAt(ClockService.now());
 
         if (!user.isAccountNonExpired())
             throw new UserAuthorizationException("User account is expired");
@@ -79,6 +81,8 @@ public class UserService {
 
         if (!passwordEncoder.matches(userLogin.getPassword(), user.getPassword()))
             throw new UserAuthorizationException("Invalid password");
+
+        userRepository.save(user);
 
         return AccessTokenResponse.builder().token(accessTokenService.generateAccessToken(user)).build();
     }

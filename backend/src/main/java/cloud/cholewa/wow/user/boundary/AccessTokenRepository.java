@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface AccessTokenRepository extends JpaRepository<AccessToken, Long> {
 
     Optional<AccessToken> findByUser(User user);
+
+    Optional<AccessToken> findByToken(String token);
 }

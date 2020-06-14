@@ -6,10 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/")
-@CrossOrigin("*")
+@CrossOrigin
 public class UserApi {
 
     private final UserService userService;
@@ -28,8 +30,7 @@ public class UserApi {
     //TODO --delete below
 
     @GetMapping("test")
-    public ResponseEntity<String> test() {
-        System.out.println("Here");
-        return new ResponseEntity<>("You are: ", HttpStatus.OK);
+    public ResponseEntity<String> test(Principal principal) {
+        return new ResponseEntity<>("You are: " + principal.getName(), HttpStatus.OK);
     }
 }
